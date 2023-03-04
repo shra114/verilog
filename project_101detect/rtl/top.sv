@@ -16,6 +16,8 @@ module top (
 //TODO : Check why SV pkg doesn't work with icarus. Is it working somewhere
 //top_pkg::fsm_state_t state;
 //top_pkg::fsm_state_t next_state;
+//-----Error Segmentation fault (core dumped)
+//
 
  localparam ST_IDLE    = 4'h1;
  localparam ST_1       = 4'h2;
