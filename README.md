@@ -12,4 +12,5 @@ Digital designs
        #contains testbench files
     |--> out
        #contains waves, logs etc. 
-
+    |--> doc
+       #contains all the documentation.
