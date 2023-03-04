@@ -1,2 +1,3 @@
+../../components/component_flop.v
 ../rtl/top.sv
 ../tb/top_tb.sv

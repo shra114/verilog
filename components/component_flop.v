@@ -9,12 +9,12 @@ module component_flop
 )
 
 (
-  input                clk,
-  input                rst_n,
+  input  logic                clk,
+  input  logic                rst_n,
 
-  input                valid_in,
-  input  [WIDTH-1 : 0] d_in,
-  input  [WIDTH-1 : 0] d_out
+  input  logic                valid_in,
+  input  logic  [WIDTH-1 : 0] d_in,
+  output logic  [WIDTH-1 : 0] d_out
 );
 
   always @(posedge clk or negedge rst_n)

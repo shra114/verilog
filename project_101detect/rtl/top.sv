@@ -19,12 +19,12 @@ module top (
 //-----Error Segmentation fault (core dumped)
 //
 
- localparam ST_IDLE    = 4'h1;
- localparam ST_1       = 4'h2;
- localparam ST_10      = 4'h4;
- localparam ST_101     = 4'h8;
+ localparam ST_IDLE    = 4'h0;
+ localparam ST_1       = 4'h1;
+ localparam ST_10      = 4'h2;
+ localparam ST_101     = 4'h4;
 
- logic [3:0] state, next_state;
+ logic [2:0] state, next_state;
 
 /////////////////////////
 //Combinational logic
@@ -48,12 +48,13 @@ assign sequence_detected = (state == ST_101);
 /////////////////////////
 //Sequential logic
 /////////////////////////
-always @ (posedge clk or negedge rst_n) begin
-  if (!rst_n)
-    state <= ST_IDLE;
-  else
-    state <= next_state;
-end
+component_flop #(.WIDTH(3)) u_state_ff  (
+  .clk      (clk),
+  .rst_n    (rst_n),
+  .valid_in (1'b1),
+  .d_in     (next_state),
+  .d_out    (state)
+);
 /////////////////////////
 //Sub block instantiations
 /////////////////////////

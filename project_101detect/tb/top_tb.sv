@@ -66,7 +66,7 @@ module top_tb();
 	
 //monitors
 	initial begin
-		$monitor("Time = %t, data_in = %b, state = %b ", $time, data_in, u_top.state);
+		$monitor("Time = %t, data_in = %b, state = %b, sequence_detected=%b", $time, data_in, u_top.state,sequence_detected );
 	end
 	
 endmodule
