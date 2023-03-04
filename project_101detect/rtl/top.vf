@@ -1,0 +1,3 @@
+$PROJ_TOP/rtl/top.sv
+$PROJ_TOP/rtl/top_pkg.sv
+
