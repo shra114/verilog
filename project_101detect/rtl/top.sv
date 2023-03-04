@@ -19,10 +19,10 @@ module top (
 //-----Error Segmentation fault (core dumped)
 //
 
- localparam ST_IDLE    = 4'h0;
- localparam ST_1       = 4'h1;
- localparam ST_10      = 4'h2;
- localparam ST_101     = 4'h4;
+ localparam ST_IDLE    = 3'h0;
+ localparam ST_1       = 3'h1;
+ localparam ST_10      = 3'h2;
+ localparam ST_101     = 3'h4;
 
  logic [2:0] state, next_state;
 
