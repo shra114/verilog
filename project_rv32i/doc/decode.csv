@@ -1,0 +1,8 @@
+Direction,Width,Signal name,Description
+input,1,clk,
+input,1,rst_n,
+input,OPCODE_WIDTH,opcode,Instruction fetch interface
+output,CMD_WIDTH,cmd,EX interface
+output,RF_ADDR_WIDTH,rs1,
+output,RF_ADDR_WIDTH,rs2,
+output,RF_ADDR_WIDTH,rd,

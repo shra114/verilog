@@ -1,0 +1,8 @@
+Direction,Width,Signal name,Description
+input,1,clk,
+input,1,rst_n,
+output,IC_ADDR_WIDTH,ic_read_addr,I cache interface
+output,1,ic_read_en,
+input,IC_DATA_WIDTH,ic_rdata,
+input,1,ic_rvalid,
+output,OPCODE_WIDTH,opcode,Decode interface
