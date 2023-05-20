@@ -5,12 +5,12 @@
 
 
 module dff #(parameter FLOP_WIDTH = 32)(
-  input                    clk,
-  input                    rst_n, 
-  input                    en,
+  input                       clk,
+  input                       rst_n, 
+  input                       en,
 
-  input  [FLOP_WIDTH-1:0]  d,
-  output [FLOP_WIDTH-1:0]  q
+  input      [FLOP_WIDTH-1:0]  d,
+  output reg [FLOP_WIDTH-1:0]  q
 );
 
 
@@ -21,7 +21,6 @@ module dff #(parameter FLOP_WIDTH = 32)(
 //Combinational logic
 /////////////////////////
 // next_state logic
-always @(*) begin
 
 /////////////////////////
 //Sequential logic
@@ -29,7 +28,7 @@ always @(*) begin
 
 always @ (posedge clk) begin
   if (~rst_n) begin
-    q <= FLOP_WIDTH'b0;
+    q <= {FLOP_WIDTH{1'b0}};
   end
   else if (en)begin
     q <= d;

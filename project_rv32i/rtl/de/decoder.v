@@ -33,7 +33,7 @@ always @(in) begin
   end
 end
 
-assign out = en ? out_reg : OUT_WIDTH`b0;
+assign out = en ? out_reg : {OUT_WIDTH{1'b0}};
 /////////////////////////
 //Sequential logic
 /////////////////////////

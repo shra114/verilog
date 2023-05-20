@@ -17,7 +17,7 @@ module reg_file #(
   input                    write_en,
   input  [ADDR_WIDTH-1:0]  addr,
   input  [REG_WIDTH-1:0]   wr_data,
-  output                   rd_data_val;
+  output                   rd_data_val,
   output [REG_WIDTH-1:0]   rd_data
 );
 
@@ -31,7 +31,7 @@ module reg_file #(
 /////////////////////////
 //Combinational logic
 /////////////////////////
-assign rd_data     = read_en_p1 ? rd_data_p1 : REG_WIDTH'b0;
+assign rd_data     = read_en_p1 ? rd_data_p1 : {REG_WIDTH{1'b0}};
 assign rd_data_val = read_en_p1;
 /////////////////////////
 //Sequential logic
@@ -42,11 +42,11 @@ assign rd_data_val = read_en_p1;
 
 always @ (posedge clk) begin
   if (~rst_n) begin
-    addr_p1 <= REG_WIDTH'b0;
-	read_en_p1 <= 1`b0;
+    addr_p1    <= {REG_WIDTH{1'b0}};
+	  read_en_p1 <= 1'b0;
   end
   else begin
-    addr_p1 <= addr;
+    addr_p1    <= addr;
     read_en_p1 <= read_en;
   end
 end
@@ -67,7 +67,13 @@ genvar i;
 
 generate
   for (i =0; i < REG_NUM; i = i+1) begin
-    dff #(.FLOP_WIDTH(REG_WIDTH)) reg_dff (.clk (clk), .rst_n(rst_n), .en(dff_wr_en[i]), .d(wr_data) .q(reg_data_p0[i]));
+    dff #(.FLOP_WIDTH(REG_WIDTH)) reg_dff (
+      .clk    (clk), 
+      .rst_n  (rst_n), 
+      .en     (dff_wr_en[i]), 
+      .d      (wr_data), 
+      .q      (reg_data_p0[i])
+      );
   end
 endgenerate
 
